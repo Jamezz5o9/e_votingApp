@@ -45,6 +45,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         ResendTokenRequest tokenRequest = ResendTokenRequest.builder()
                 .email(registrationRequest.getEmail())
                 .build();
+
         userService.sendOTP(tokenRequest);
         return ApiData.builder()
                 .data("AppUser Registration successful")

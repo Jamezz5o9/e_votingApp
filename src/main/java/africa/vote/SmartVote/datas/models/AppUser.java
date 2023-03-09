@@ -17,6 +17,7 @@ import java.util.List;
 @Setter
 @Builder
 @NoArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
 public class AppUser implements UserDetails {
     @Id

@@ -26,6 +26,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Optional;
 
+import static africa.vote.SmartVote.datas.enums.Status.VERIFIED;
 import static africa.vote.SmartVote.utils.EmailUtils.buildEmail;
 
 @Service
@@ -62,7 +63,7 @@ public class UserServiceImpl implements UserService {
         tokenVerification(tokenRequest);
         var foundUser = findByEmailIgnoreCase(tokenRequest.getEmail())
                 .orElseThrow(() -> new GenericException("AppUser Not found"));
-        userRepository.verifyUser(Status.VERIFIED, tokenRequest.getEmail());
+        userRepository.verifyUser(VERIFIED, tokenRequest.getEmail());
         return ApiData.builder()
                 .data("Welcome, " + foundUser.getFirstName()  + " Account Verified Successfully")
                 .build();
